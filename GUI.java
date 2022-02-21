@@ -228,6 +228,7 @@ public class GUI extends Application {
         months_24.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
             // When any of the months is selected, we need to deselect all the other month options.
             // We also need to set the annual interest value to reflect the amount of months.
+            // There is likely a better way to do this than this with a different tree object.
             if(isNowSelected) {
                 months_36.setSelected(false);
                 months_48.setSelected(false);
