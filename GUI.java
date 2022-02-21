@@ -124,7 +124,8 @@ public class GUI extends Application {
         //opt1.setStyle("-fx-background-color: #F4F4F4;");
         //buttons.setStyle("-fx-background-color: #F4F4F4;");
         // Incorrect stuff ends
-        // A bit of a hint to add the grid lines and the border is to give h1, loan1, h2, and opt1, a border and set it to black.
+        // A bit of a hint to add the grid lines and the border is to give h1, loan1, h2, opt1, and buttons a border and set it to black.
+        // This is done with a bit of CSS and .setStyle on each of these nodes.
         // This should make the gridlines
         window.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
         window.setPadding(new Insets(10));
