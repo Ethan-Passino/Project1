@@ -116,12 +116,16 @@ public class GUI extends Application {
         fin1.setSpacing(15);
         fin2.setSpacing(10);
         opt1.setSpacing(10);
-        window.setStyle("-fx-background-color: black;");
-        h1.setStyle("-fx-background-color: #F4F4F4;");
-        loan1.setStyle("-fx-background-color: #F4F4F4;");
-        h2.setStyle("-fx-background-color: #F4F4F4;");
-        opt1.setStyle("-fx-background-color: #F4F4F4;");
-        buttons.setStyle("-fx-background-color: #F4F4F4;");
+        // This is technically incorrect and will not help.
+        //window.setStyle("-fx-background-color: black;");
+        //h1.setStyle("-fx-background-color: #F4F4F4;");
+        //loan1.setStyle("-fx-background-color: #F4F4F4;");
+        //h2.setStyle("-fx-background-color: #F4F4F4;");
+        //opt1.setStyle("-fx-background-color: #F4F4F4;");
+        //buttons.setStyle("-fx-background-color: #F4F4F4;");
+        // Incorrect stuff ends
+        // A bit of a hint to add the grid lines and the border is to give h1, loan1, h2, and opt1, a border and set it to black.
+        // This should make the gridlines
         window.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
         window.setPadding(new Insets(10));
 
@@ -150,6 +154,7 @@ public class GUI extends Application {
             double down = Double.parseDouble(downField.getText());
             double sale = Double.parseDouble(saleField.getText()) / 100;
             double optionCost = 0.0;
+            // Checking if certain checkboxes are checked and adding their costs to optionCost
             if(trans.isSelected()) {
                 optionCost += 1800;
             }
@@ -172,6 +177,7 @@ public class GUI extends Application {
             // We change it to a string so we can remove all decimals past 2 places.
             double monthlyInterest = annualInterest.get() / 12;
             int months = 0;
+            // Checking which month plan is selected and setting the number of months to whichever one is selected.
             if(months_24.isSelected()) {
                 months = 24;
             }
@@ -196,6 +202,7 @@ public class GUI extends Application {
 
         });
         reset.setOnAction((EventHandler) event -> {
+            // Resetting all the data inputs to their default values
             baseField.setText("0.0");
             downField.setText("0.0");
             saleField.setText("7.0");
@@ -214,9 +221,12 @@ public class GUI extends Application {
 
         });
         exit.setOnAction((EventHandler) event -> {
+            // When exit button is clicked, close the window.
             primaryStage.close();
         });
         months_24.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
+            // When any of the months is selected, we need to deselect all the other month options.
+            // We also need to set the annual interest value to reflect the amount of months.
             if(isNowSelected) {
                 months_36.setSelected(false);
                 months_48.setSelected(false);
@@ -257,6 +267,7 @@ public class GUI extends Application {
     }
 
     public static void main(String[] args) {
+        // Starts creating the GUI.
         launch(args);
     }
 }
